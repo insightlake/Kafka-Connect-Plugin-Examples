@@ -198,3 +198,19 @@ Plugin Examples
   "snowflake.topic2table.map": "my_test_topic:MY_TEST_TABLE"
 }
 ```
+
+## Elasticsearch Sink Connector
+```
+{
+  "name": "elasticsearch-sink",
+  "config": {
+    "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+    "tasks.max": "1",
+    "topics": "test-topic",
+    "key.ignore": "true",
+    "connection.url": "http://localhost:9200",
+    "type.name": "kafka-connect",
+    "name": "elasticsearch-sink"
+  }
+}
+```

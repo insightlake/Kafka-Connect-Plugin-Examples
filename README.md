@@ -26,22 +26,22 @@ Plugin Examples
 ## MySQL JDBC Sink Connector
 ```
 {
-  "name": "snow",
-  "connector.class": "com.snowflake.kafka.connector.SnowflakeSinkConnector",
-  "tasks.max": "1",
-  "key.converter": "org.apache.kafka.connect.storage.StringConverter",
-  "value.converter": "com.snowflake.kafka.connector.records.SnowflakeJsonConverter",
-  "transforms": "",
-  "topics": [
-    "my_cust_json"
-  ],
-  "snowflake.url.name": "xxx.us-east-1.snowflakecomputing.com",
-  "snowflake.user.name": "xxx",
-  "snowflake.private.key": "xxx",
-  "snowflake.private.key.passphrase": "snowflake",
-  "snowflake.database.name": "DEMO_DB",
-  "snowflake.schema.name": "MYTESTSCHEMA",
-  "snowflake.topic2table.map": "my_test_topic:MY_TEST_TABLE"
+	"name": "mysink",
+	"config": {
+		"connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+		"connection.password": "edpadmin",
+		"errors.tolerance":"all",
+		"errors.deadletterqueue.context.headers.enable":true,
+		"errors.deadletterqueue.topic.name": "mytest_cust_fraud",
+		"errors.log.enable": true,
+    "errors.log.include.messages": true,
+		"topics": "mytest_cust_fraud",
+		"connection.user": "edpadmin",
+		"name": "mysink",
+		"auto.create": "true",
+		"connection.url": "jdbc:mysql://edpnew.c7uqx6xqd0nl.us-east-1.rds.amazonaws.com:3306/myexplore",
+		"insert.mode": "insert"
+	}
 }
 ```
 
